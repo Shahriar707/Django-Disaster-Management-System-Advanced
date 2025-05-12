@@ -1,0 +1,267 @@
+/* General Body Styling */
+body {
+    background-color: #f4f6f9; /* Light gray background */
+    font-family: 'Roboto', sans-serif; /* Modern font */
+    color: #333;
+    margin: 0;
+    padding-bottom: 50px;
+    line-height: 1.6;
+}
+
+/* Custom Navbar Styling */
+.custom-navbar {
+    background-color: #34495e; /* Darker blue-gray for a modern look */
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Removing the bullets from the navbar */
+.navbar-nav {
+    list-style: none;  /* Remove default list bullet points */
+    padding-left: 0;   /* Remove padding from the left */
+}
+
+/* Custom Navbar Brand Styling */
+.custom-navbar-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ecf0f1 !important;
+    text-transform: uppercase;
+    margin-right: 0; /* Ensure no extra space around the brand */
+    text-decoration: none !important;  /* Remove any underline */
+    border: none;  /* Ensure no border is applied */
+    display: inline-block; /* Remove unwanted elements */
+    padding: 0; /* Reset any padding that might be causing the issue */
+    position: relative; /* Ensure no pseudo-elements are causing the line */
+    letter-spacing: 0; /* Remove extra letter spacing */
+    overflow: hidden; /* Prevent any overflow of content */
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Remove pseudo-elements like underscores */
+.custom-navbar-brand::before,
+.custom-navbar-brand::after {
+    content: "" !important; /* Remove any pseudo-elements like an underscore */
+    display: none !important; /* Hide any possible after element causing the line */
+}
+
+/* Ensure the navbar links don't inherit any text-decoration */
+.navbar-nav .nav-link {
+    text-decoration: none !important;
+}
+
+/* Remove any accidental border at the bottom */
+.custom-navbar {
+    border-bottom: none !important;
+}
+
+/* Navbar Links */
+.custom-nav-link {
+    color: #ecf0f1 !important;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Ensure no underline */
+    border-radius: 5px;
+}
+
+/* Navbar Hover Effect */
+.custom-nav-link:hover {
+    color: #fff !important;
+    background-color: #16a085; /* Modern teal color */
+    transform: scale(1.05);
+}
+
+/* Active Navbar Link Styling */
+.custom-nav-link.active {
+    color: #fff !important;
+    background-color: #f39c12;
+    transform: scale(1.05);
+}
+
+/* Align navbar links to the right */
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    width: 100%;
+}
+
+/* Main Content Section */
+.welcome-text {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2980b9;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+/* Button Styling */
+.btn-custom {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(145deg, #2980b9, #3498db);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Align buttons to the right */
+.text-right {
+    text-align: right;
+    margin-top: 30px;
+}
+
+h1.display-3 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2980b9;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Adjust card styles */
+.card-body {
+    padding: 30px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #34495e;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Center cards and add proper spacing */
+.row .col-md-4 {
+    margin-bottom: 30px;
+}
+
+/* Button Styling */
+.btn-custom {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(145deg, #2980b9, #3498db);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-lg {
+    font-size: 1.25rem;
+    padding: 15px 40px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2C3E50;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+footer a {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: #ecf0f1;
+    text-decoration: underline;
+}
+
+/* Responsiveness for Small Screens */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .btn-custom {
+        font-size: 1rem;
+    }
+
+    h1.display-3 {
+        font-size: 2.5rem;
+    }
+}
