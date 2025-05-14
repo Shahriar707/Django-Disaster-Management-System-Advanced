@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/login/')
 def home_view(request):
     return render(request, 'home.html')
 
@@ -40,7 +42,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
 
-    return redirect('home')
+    return redirect('login')
 
 
 def donation_view(request):

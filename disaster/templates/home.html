@@ -17,38 +17,27 @@
 
 <body class="bg-light">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
-        <div class="container">
-            <a class="navbar-brand custom-navbar-brand" href="/">Disaster Management</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link {% if request.path == '/donations/' %} active {% endif %}" href="/donations/">Donations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link {% if request.path == '/crisis/' %} active {% endif %}" href="/crisis/">Crisis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link {% if request.path == '/volunteer/' %} active {% endif %}" href="/volunteer/">Volunteers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link {% if request.path == '/inventory/' %} active {% endif %}" href="/inventory/">Inventory</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link {% if request.path == '/tasks/' %} active {% endif %}" href="/tasks/">Tasks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-nav-link" href="#" id="logout-link">Logout</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Header with hamburger -->
+    <header class="header">
+        <a href="/" class="brand">Disaster Management</a>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+    </header>
+
+    <!-- Side drawer -->
+    <div class="side-drawer" id="drawer">
+        <div class="drawer-header">
+            <span>Menu</span>
+            <div class="close-btn" id="closeDrawer">&times;</div>
         </div>
-    </nav>
+        <ul class="drawer-links">
+            <li><a href="{% url 'donation_list' %}">Donations</a></li>
+            <li><a href="{% url 'crisis_list' %}">Crisis</a></li>
+            <li><a href="{% url 'volunteer_list' %}">Volunteers</a></li>
+            <li><a href="{% url 'inventory_list' %}">Inventory</a></li>
+            <li><a href="{% url 'task_list' %}">Tasks</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
 
     <!-- Main Content Section -->
     <div class="container text-center mt-5">
@@ -135,6 +124,20 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybF6AXOUF9XG9E1H3iwBrrFkhOj9vjKKw6X30HHz16O3kh9v6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyf2pXFxVtY0kP2vYt3fXrk9f0Yy5UqBFG5bVlf8m4RkdHtvTzP1V6t" crossorigin="anonymous"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('hamburger').addEventListener('click', function() {
+                document.getElementById('drawer').classList.add('open');
+            });
+            document.getElementById('closeDrawer').addEventListener('click', function() {
+                document.getElementById('drawer').classList.remove('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#drawer') && !e.target.closest('#hamburger')) {
+                    document.getElementById('drawer').classList.remove('open');
+                }
+            });
+        });
+
         $(document).ready(function() {
             $('#logout-link').on('click', function(event) {
                 event.preventDefault();  // prevent normal link behavior
