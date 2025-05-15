@@ -1,7 +1,18 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body > main {
+    flex: 1;
+}
+
 /* General Body Styling */
 body {
-    background-color: #f4f6f9; /* Light gray background */
-    font-family: 'Roboto', sans-serif; /* Modern font */
+    background-color: #f4f6f9;
+    font-family: 'Roboto', sans-serif;
     color: #333;
     margin: 0;
     padding-bottom: 50px;
@@ -140,49 +151,62 @@ h1.display-3 {
     text-align: center;
 }
 
-/* Card Styling */
-.card {
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+/* Glassmorphism Card Style */
+.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px 0 rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 25px 20px;
+    color: #333;
+    text-align: center;
     transition: all 0.3s ease;
-    padding: 20px;
-    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 0 !important;
 }
 
-/* Adjust card styles */
-.card-body {
-    padding: 30px;
-    text-align: center;
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.card-title {
-    font-size: 1.6rem;
+.glass-card h5 {
+    font-size: 1.8rem;
     font-weight: 700;
     color: #34495e;
     margin-bottom: 15px;
 }
 
-.card-text {
+.glass-card p {
     font-size: 1.1rem;
     color: #7f8c8d;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+/* NEW: Final CSS Grid for home-sections */
+.home-sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 40px;
+    justify-content: center;
+    padding: 0px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Center cards and add proper spacing */
-.row .col-md-4 {
-    margin-bottom: 30px;
+/* Last card full row center */
+.home-sections .glass-card:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 60%;
 }
 
-.btn-lg {
-    font-size: 1.25rem;
-    padding: 15px 40px;
+input.form-control, select.form-select {
+    border-radius: 10px;
+    padding: 10px;
 }
 
 /* Footer Styling */
@@ -211,7 +235,79 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Responsiveness for Small Screens */
+/* Crisis page specific styles */
+.crisis-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.crisis-form-wrapper {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 30px 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.crisis-form-wrapper h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2980b9;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Beautiful crisis form styles */
+.glass-card form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #34495e;
+}
+
+.glass-card form input[type="text"],
+.glass-card form textarea,
+.glass-card form select,
+.glass-card form input[type="file"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.glass-card form input[type="text"]:focus,
+.glass-card form textarea:focus,
+.glass-card form select:focus,
+.glass-card form input[type="file"]:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+.glass-card form button {
+    margin-top: 25px;
+    width: 100%;
+}
+
+
+/* Slightly bigger button for form */
+.crisis-form-wrapper button {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .header {
         justify-content: flex-start;
@@ -221,12 +317,17 @@ footer a:hover {
         margin-left: 20px;
     }
 
-    .card {
-        margin-bottom: 20px;
+    .glass-card {
+        padding: 30px 15px;
     }
 
-    .container {
-        margin-top: 20px;
+    .home-sections {
+        grid-template-columns: 1fr;
+        max-width: 900px;
+    }
+
+    .home-sections .glass-card:last-child {
+        width: 90%;
     }
 
     .lead {

@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% block title %}Donate - Disaster Management{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Make a Donation</h1>
+    <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="id_donor_name">Name:</label>
+            {{ form.donor_name }}
+
+            <label for="id_amount">Amount (BDT):</label>
+            {{ form.amount }}
+
+            <label for="id_donation_type">Donation Type:</label>
+            {{ form.donation_type }}
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-custom">Submit Donation</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

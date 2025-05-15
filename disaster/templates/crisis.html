@@ -1,9 +1,31 @@
 {% extends 'home.html' %}
 
-{% block title %} Login - Disaster Management {% endblock %}
+{% block title %}Crisis - Disaster Management{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Crisis</h1>
-    </div>
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Reported Crises</h1>
+    <a href="{% url 'crisis_add' %}" class="btn btn-custom mb-4">Report a Crisis</a>
+
+    {% if all_crisis %}
+        <div class="home-sections">
+            {% for crisis in all_crisis %}
+                <div class="glass-card">
+                    <h5>{{ crisis.title }}</h5>
+                    <p><strong>Location:</strong> {{ crisis.location }}</p>
+                    <p><strong>Severity:</strong> {{ crisis.severity }}</p>
+                    <p><strong>Status:</strong> {{ crisis.status }}</p>
+                    <p>{{ crisis.description }}</p>
+                    <p><strong>Help Needed:</strong> {{ crisis.required_help }}</p>
+                    <p><strong>Date Reported:</strong> {{ crisis.date_reported }}</p>
+                    {% if crisis.images %}
+                        <img src="{{ crisis.images.url }}" style="max-width: 200px; height: auto; border-radius: 10px; margin-top: 10px;" alt="Crisis Image">
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No crisis reported yet.</p>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,9 +1,25 @@
 {% extends 'home.html' %}
-
-{% block title %} Login - Disaster Management {% endblock %}
+{% block title %}Donations - Disaster Management{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Donation</h1>
-    </div>
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Donation Fund</h1>
+    <h3>Total Collected: {{ total_amount }} BDT</h3>
+    <a href="{% url 'donation_add' %}" class="btn btn-custom mt-3 mb-4">Make a Donation</a>
+
+    {% if donations %}
+        <div class="home-sections">
+            {% for donation in donations %}
+                <div class="glass-card">
+                    <h5>{{ donation.donor_name }}</h5>
+                    <p><strong>Amount:</strong> {{ donation.amount }} BDT</p>
+                    <p><strong>Type:</strong> {{ donation.get_donation_type_display }}</p>
+                    <p><small>{{ donation.date }}</small></p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No donations yet.</p>
+    {% endif %}
+</div>
 {% endblock %}

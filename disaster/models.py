@@ -8,7 +8,6 @@ class Donation(models.Model):
     amount = models.DecimalField(decimal_places=2, max_digits=10)
     date = models.DateField(auto_now_add=True)
     donation_type = models.CharField(max_length=50, choices=[('one_time', 'One Time'), ('recurring', 'Recurring')], default='one_time')
-    volunteer = models.ForeignKey('volunteer', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f'{self.donor_name} - {self.amount}'
@@ -28,11 +27,11 @@ class Crisis(models.Model):
     title = models.CharField(max_length=120)
     location = models.CharField(max_length=120)
     description = models.CharField(max_length=1000)
-    severity = models.CharField(max_length=100, choices=SEVERITY_CHOICES)
+    severity = models.CharField(max_length=10, choices=SEVERITY_CHOICES)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
-    date = models.DateField(auto_now_add=True)
+    date_reported = models.DateField(auto_now_add=True)
     is_approved = models.BooleanField(default=False)
-    required_help = models.TextField(max_length=500, default='Not_specified')
+    required_help = models.TextField(max_length=500, default='Not specified')
     images = models.ImageField(upload_to='crisis_photos/', null=True, blank=True)
     added_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
