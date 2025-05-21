@@ -1,0 +1,17 @@
+{% extends 'home.html' %}
+{% block title %}Add Task - Disaster Management{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Add Task</h1>
+    <div class="glass-card" style="max-width: 600px; margin: 0 auto; text-align: left;">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-custom">Submit Task</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

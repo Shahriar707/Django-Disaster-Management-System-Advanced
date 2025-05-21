@@ -16,9 +16,12 @@ urlpatterns = [
     path('crisis/', views.crisis_list, name='crisis_list'),
     path('crisis/add/', views.crisis_create, name='crisis_add'),
     # volunteer
-    path('volunteer/', views.volunteer_view, name='volunteer_list'),
+    path('volunteers/', views.volunteer_list, name='volunteer_list'),
+    path('volunteers/add/', views.volunteer_create, name='volunteer_add'),
     # inventory
-    path('inventory/', views.inventory_view, name='inventory_list'),
+    path('inventory/', views.inventory_list, name='inventory_list'),
+    path('inventory/add/', views.inventory_create, name='inventory_add'),
     # task
-    path('task/', views.task_view, name='task_list'),
+    path('tasks/', views.task_list, name='task_list'),
+    path('tasks/add/', views.task_create, name='task_add'),
 ]

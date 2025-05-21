@@ -1,9 +1,22 @@
 {% extends 'home.html' %}
-
-{% block title %} Login - Disaster Management {% endblock %}
+{% block title %}Tasks - Disaster Management{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Tasks</h1>
-    </div>
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Tasks</h1>
+    <a href="{% url 'task_add' %}" class="btn btn-custom mb-4">Add Task</a>
+
+    {% if tasks %}
+        <div class="home-sections">
+            {% for task in tasks %}
+                <div class="glass-card">
+                    <h5>{{ task.task_name }}</h5>
+                    <p>{{ task.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No tasks found.</p>
+    {% endif %}
+</div>
 {% endblock %}

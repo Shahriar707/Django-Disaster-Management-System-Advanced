@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import *
-from .forms import CrisisForm, DonationForm
+from .forms import CrisisForm, DonationForm, VolunteerForm, InventoryForm, TaskForm
+
 
 # Create your views here.
 
@@ -97,11 +98,57 @@ def crisis_create(request):
     return render(request, 'crisis_form.html', {'form': form})
 
 
-def inventory_view(request):
-    return render(request, 'inventory.html')
+def inventory_list(request):
+    inventories = Inventory.objects.all().order_by('-added_at')
 
-def volunteer_view(request):
-    return render(request, 'volunteer.html')
+    return render(request, 'inventory.html', {'inventories': inventories})
 
-def task_view(request):
-    return render(request, 'task.html')
+
+def inventory_create(request):
+    form = InventoryForm()
+    if request.method == 'POST':
+        form = InventoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inventory_list')
+    else:
+        form = InventoryForm()
+
+    return render(request, 'inventory_form.html', {'form': form})
+
+
+def volunteer_list(request):
+    volunteers = Volunteer.objects.all().order_by('name')
+    return render(request, 'volunteer.html', {'volunteers': volunteers})
+
+
+def volunteer_create(request):
+    form = VolunteerForm(request.POST)
+    if request.method == 'POST':
+        form = VolunteerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('volunteer_list')
+    else:
+        form = VolunteerForm()
+
+    return render(request, 'volunteer_form.html', {'form': form})
+
+
+def task_list(request):
+    tasks = Task.objects.all().order_by('task_name')
+
+    return render(request, 'task.html', {'tasks': tasks})
+
+
+def task_create(request):
+    form = TaskForm()
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')
+    else:
+        form = TaskForm()
+
+    return render(request, 'task_form.html', {'form': form})

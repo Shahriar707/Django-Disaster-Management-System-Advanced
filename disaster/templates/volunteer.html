@@ -1,9 +1,27 @@
 {% extends 'home.html' %}
-
-{% block title %} Login - Disaster Management {% endblock %}
+{% block title %}Volunteers - Disaster Management{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Volunteer</h1>
-    </div>
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Volunteers</h1>
+    <a href="{% url 'volunteer_add' %}" class="btn btn-custom mb-4">Add Volunteer</a>
+
+    {% if volunteers %}
+        <div class="home-sections">
+            {% for volunteer in volunteers %}
+                <div class="glass-card">
+                    <h5>{{ volunteer.name }}</h5>
+                    <p><strong>Username:</strong> {{ volunteer.user.username }}</p>
+                    <p><strong>Age:</strong> {{ volunteer.age }}</p>
+                    <p><strong>Phone:</strong> {{ volunteer.phone_number }}</p>
+                    <p><strong>Location:</strong> {{ volunteer.location }}</p>
+                    <p><strong>Assigned Task:</strong> {{ volunteer.assigned_task }}</p>
+                    <p><strong>Available:</strong> {{ volunteer.is_available|yesno:"Yes,No" }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No volunteers found.</p>
+    {% endif %}
+</div>
 {% endblock %}

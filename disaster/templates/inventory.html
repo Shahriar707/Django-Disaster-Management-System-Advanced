@@ -1,9 +1,29 @@
 {% extends 'home.html' %}
-
-{% block title %} Login - Disaster Management {% endblock %}
+{% block title %}Inventory - Disaster Management{% endblock %}
 
 {% block content %}
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Inventory</h1>
-    </div>
+<div class="text-center mt-5">
+    <h1 class="welcome-text">Inventory</h1>
+    <a href="{% url 'inventory_add' %}" class="btn btn-custom mb-4">Add Inventory Item</a>
+
+    {% if inventories %}
+        <div class="home-sections">
+            {% for item in inventories %}
+                <div class="glass-card">
+                    <h5>{{ item.item_name }}</h5>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                    <p><strong>Type:</strong> {{ item.get_inventory_type_display }}</p>
+                    <p>{{ item.description }}</p>
+                    <p><strong>Added by:</strong> {{ item.added_by.username }}</p>
+                    <p><small>Added at: {{ item.added_at }}</small></p>
+                    {% if item.crisis %}
+                        <p><strong>Related Crisis:</strong> {{ item.crisis.title }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No inventory items found.</p>
+    {% endif %}
+</div>
 {% endblock %}
